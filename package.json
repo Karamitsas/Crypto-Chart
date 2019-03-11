@@ -1,0 +1,26 @@
+{
+  "name": "crypto-chart",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karamitsas/Crypto-Chart.git"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Crypto-Chart",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^4.0.7"
+  },
+  "bugs": {
+    "url": "https://github.com/Karamitsas/Crypto-Chart/issues"
+  },
+  "homepage": "https://github.com/Karamitsas/Crypto-Chart#readme",
+  "dependencies": {}
+}
