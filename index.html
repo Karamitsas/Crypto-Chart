@@ -9,24 +9,56 @@
               height:40vh;
               background:#0050EF;
           }
+          .graph_table{
+              margin: 5px;
+              padding: 0px;
+              border: 1px solid black;
+          }
       </style>
   </head>
   <body>
+    
     <h1>Welcome to Crypto-World</h1>
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
-      <P>Detta är test Nr. 0.15.2</P>
+      <P>Detta är test Nr. 0.16</P>
       <p>Uppdatera varje test nr innan varje push!</p><br>
-      <p>Kilian was here</p>
-      <p>Walla pulla nu</p>
+      
 
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
     </script>
       
+      <table>
+          <tr class="graph_table">
+              <td class="graph_table">
+                  <p>Select Currency</p>
+              </td>
+              <td class="graph_table">
+                  <p>Currency *LOGO*</p>
+              </td>
+          </tr>
+          <tr class="graph_table">
+              <td class="graph_table">
+                  <p>1 Day</p>
+              </td>
+              <td class="graph_table">
+                  <p>1 Week</p>
+              </td>
+              <td class="graph_table">
+                  <p>1 Month</p>
+              </td>
+              <td class="graph_table">
+                  <p>1 Year</p>
+              </td>
+              <td class="graph_table">
+                  <p>All Time</p>
+              </td>
+          </tr>
+      </table>
       <div id="graph">
       </div>
   </body>
