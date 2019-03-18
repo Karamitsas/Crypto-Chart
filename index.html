@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Crypto-Chart</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
       <style type="text/css">
           *{
               font-family: sans-serif;
@@ -58,7 +59,25 @@
               </td>
           </tr>
       </table>
-      <div id="graph">
-      </div>
+      <canvas id="chart"></canvas>
+      <script>
+          var time = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
+          var currencyValue = [86,114,106,106,107,111,133,221,783,2478];
+          var ctx = document.getElementById("chart");
+          var chart = new Chart(ctx, {
+              type: "line",
+              data: {
+                  labels: time, 
+                  datasets: [
+                      {
+                          data: currencyValue,
+                          label: "BitCoin"
+                      }
+                  ]
+              }
+              
+          });
+      
+      </script>
   </body>
 </html>
