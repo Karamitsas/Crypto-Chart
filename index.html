@@ -9,8 +9,6 @@
               font-family: sans-serif;
           }
           #graph{
-              width:60vw;
-              height:40vh;
               background:#0050EF;
           }
           .graph_table{
@@ -23,7 +21,7 @@
   <body>
     
     <h1>Welcome to Crypto-World</h1>
-    <P>Detta är test Nr. 0.17</P>
+    <P>Detta är test Nr. 0.20</P>
     <p>Uppdatera varje test nr innan varje push!</p><br>
       
 
@@ -59,15 +57,32 @@
               </td>
           </tr>
       </table>
-      <canvas id="chart"></canvas>
+      <canvas id="chart">
+          <p>Chart rendering error</p>
+      </canvas>
       <script>
           //chart.js
           //Variables:
           //Time (bottom labels)
           var time = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
           //currencies (line graph heights)
-          var currency1 = [86,114,106,106,107,111,133,221,783,2478];
-          var currency2 = [1,5,7,10,50,150,279,571,305,250];
+          var currency1value = [86,114,106,106,107,111,133,221,783,234];
+          var currency1name = "Bitcoin";
+          
+          var currency2value = [1,5,7,10,50,150,279,571,305,250];
+          var currency2name = "Dogecoin";
+          
+          var currency3value = [];
+          var currency3name = "";
+          
+          var currency4value = [];
+          var currency4name = "";
+          
+          var currency5value = [];
+          var currency5name = "";
+          
+          var currency6value = [];
+          var currency6name = "";
           
           //Chart script
           //Define chart element
@@ -79,16 +94,45 @@
                   labels: time, 
                   datasets: [
                       {
-                          data: currency1,
-                          label: "BitCoin",
-                          borderColor: "#f08b16",
-                          backgroundColor: "rgba(255,150,50,0.3)",
+                          data: currency1value,
+                          label: currency1name,
+                          borderColor: "rgba(255,0,0,1)",
+                          backgroundColor: "rgba(255,0,0,0.3)",
                       },
                       {
-                          data: currency2,
-                          label: "DogeCoin",
-                      }
+                          data: currency2value,
+                          label: currency2name,
+                          borderColor: "rgba(255,255,0,1)",
+                          backgroundColor: "rgba(255,255,0,0.3)",
+                      },
+                      {
+                          data: currency3value, 
+                          label: currency3name,
+                          borderColor: "rgba(0,255,0,1)",
+                          backgroundColor: "rgba(0,255,0,0.3)"
+                      },
+                      {
+                          data: currency4value, 
+                          label: currency4name,
+                          borderColor: "rgba(0,255,255,1)",
+                          backgroundColor: "rgba(0,255,255,0.3)"
+                      },
+                      {
+                          data: currency5value, 
+                          label: currency5name,
+                          borderColor: "rgba(0,0,255,1)",
+                          backgroundColor: "rgba(0,0,255,0.3)"
+                      },
+                      {
+                          data: currency6value, 
+                          label: currency6name,
+                          borderColor: "rgba(255,0,255,1)",
+                          backgroundColor: "rgba(255,0,255,0.3)"
+                      },
                   ]
+              },
+              options: {
+                  
               }
               
           });
