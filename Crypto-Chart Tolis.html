@@ -18,7 +18,15 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #0050EF;
     box-sizing: border-box;
-	font-size:16px;
+	  font-size:16px;
+
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  border-color: blue;
+  box-shadow: 0 0 8px 0 blue;
+
+
 }
 
 .imgcontainer {
@@ -42,7 +50,7 @@ input[type=text], input[type=password] {
     margin: 4% auto 15% auto;
     border: 1px solid #888;
     width: 40%;
-	padding-bottom: 30px;
+	  padding-bottom: 30px;
 }
 
 .close {
@@ -54,33 +62,37 @@ input[type=text], input[type=password] {
     font-weight: bold;
     cursor: pointer;
 }
+
 @keyframes zoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
 }
 .animate {
-    animation: zoom 0.6s
+    animation: zoom 0.7s
 }
 
 </style>
 <body>
 
-  <button onclick="document.getElementById('modal-wrapper').style.display='block'" style="width:200px; margin-top:200px; margin-left:160px;">
+  <button onclick="document.getElementById('modal-wrapper').style.display='block'">
 Open Popup</button>
+
 
 <div id="modal-wrapper" class="modal">
 
-  <form class="modal-content animate" action="/action_page.php">
-
+  <form class="modal-content animate">
     <div class="imgcontainer">
-      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-      <h1 style="text-align:center">Modal Popup Box</h1>
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
+      <h1 style="text-align:center">Make An Account</h1>
     </div>
 
     <div class="container">
-      <input type="text" placeholder="Enter Username" name="uname">
-      <input type="password" placeholder="Enter Password" name="psw">
-      <button type="submit">Login</button>
+      <input type="text" placeholder="Enter Username" name="Username">
+      <input type="password" placeholder="Enter Password" name="Password">
+      <input type="password" placeholder="Repeat Password" name="Repeatpass">
+      <center>
+      <button type="submit" style="">Register</button>
+      </center>
     </div>
 
   </form>
@@ -98,7 +110,12 @@ Open Popup</button>
 
 <div class="chart-container" style=" height:60vh; width:50vw; margin: 20px; padding: 50px;">
     <canvas id="chart"></canvas>
-<script>
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js');
+    </script>
+    <script>
     //chart.js
     //Variables:
     //Tiden (alla labels i botten)
