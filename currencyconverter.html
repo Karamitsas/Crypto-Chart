@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>Currency converter</title>
+<body>
+
+<h2>Currency converter</h2>
+<p>Type a value in the field to convert the value:</p>
+
+<p>
+  <label>Your Currency:</label>
+  <select id="valutor">
+  <option value="eur">EUR</option>
+  <option value="usd">USD</option>
+  <option value="gbp">GBP</option>
+  </select>
+  <input id="input" type="number" placeholder="Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
+</p>
+<!--<select id="nyvalutor">
+<option value="euro">Euro</option>
+<option value="usd">USD</option>
+<option value="gbp">GBP</option>
+</select> -->
+<p>SEK: <span id="output"></span></p>
+
+<script>
+/*
+var key = "91b5f03e3e48c01cb06f0b492cf8ea0f";
+function setup(){
+  createCanvas(200, 200);
+  loadJSON('http://data.fixer.io/api/latest?access_key=91b5f03e3e48c01cb06f0b492cf8ea0f', gotData);
+}
+function gotData(api){
+    println(api);
+}
+*/
+function Converter(valNum) {
+if(document.getElementById('valutor').value == "eur") {
+  document.getElementById("output").innerHTML=valNum*9.57337809;
+}
+  else if(document.getElementById('valutor').value == "usd") {
+  document.getElementById("output").innerHTML=valNum*8.86575911;
+  }
+  else if(document.getElementById('valutor').value == "gbp") {
+  document.getElementById("output").innerHTML=valNum*11.7179181;
+  }
+
+}
+
+</script>
+</body>
+</html>
