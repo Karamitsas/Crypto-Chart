@@ -11,30 +11,129 @@ body {
   background-image: url(Crypto-background.png);
 }
 
+input[type=text], input[type=password] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 26px;
+    display: inline-block;
+    border: 1px solid #0050EF;
+    box-sizing: border-box;
+	  font-size:16px;
+
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  border-color: blue;
+  box-shadow: 0 0 8px 0 blue;
+
+}
+
+.imgcontainer {
+    background-image: url(Crypto-Chart-loginform.drawio);
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+.modal {
+	   display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    border-radius: 10%;
+    background: linear-gradient(#b3cde0,#6497b1,#005b96,#03396c,#011f4b );
+    margin: 4% auto 15% auto;
+    border: 1px solid #888;
+    width: 30%;
+	  padding-bottom: 30px;
+    height: 300px;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+.animate {
+    animation: zoom 0.7s
+}
+
+  #Menu, #ett, #tva, #tre {
+  background: #3d85c6;
+  background: linear-gradient(#3d85c6, #0050ef);
+  border: 3px solid #ff9900;
+  border-radius:  7px;
+  padding: 7px 10px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 25px/1 "", cursive;
+  text-shadow:   3px 3px #000000;
+  position: relative;
+  top: 200px;
+  cursor: pointer;
+}
 
 
 </style>
 <body>
 
+ <!-- Login form button -->
+ <center>
+  <button id="Menu" onclick="document.getElementById('modal-wrapper').style.display='block'">Menu</button>
+ </center>
 
+  <!-- Login modal popup -->
+<div id="modal-wrapper" class="modal">
 
-  <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-  </script>
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
+      <h1 style="text-align:center"><u>Welcome</u></h1>
+      <img src="justalogotryout3.png">
+    </div>
+
+    <!-- login form container -->
+
+    <div class="container">
+      <button id="ett" onclick="" style="top:-188px; left: 30px;">testingi</button>
+      <button id="tva" style="left: 172px; top: -188px; padding: 7px 20px;">testingi</button>
+      <center>
+      <button id="tre" style="top:-115px;">testingi</button>
+      </center>
+    </div>
+
+  </form>
+
+</div>
   <center>
     <div id="logo">
-      <img src="Crypto-ChartLogo.png" height="200px">
+      <img src="Crypto-ChartLogo.png" height="150px" width="170px;">
 </div>
 </center>
 
 <div class="chart-container" style=" height:60vh; width:50vw; margin: 20px; padding: 50px;">
     <canvas id="chart"></canvas>
-  </div>
 
-
-
-<script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js');
+    </script>
+    <script>
     //chart.js
     //Variables:
     //Tiden (alla labels i botten)
@@ -69,6 +168,13 @@ body {
         }
 
     });
+    //Modalen stänger när man klickar utanför windown.
+    var modal = document.getElementById('modal-wrapper')
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
 
 </script>
 
