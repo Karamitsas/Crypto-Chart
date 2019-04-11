@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+</head>
+<style>
+body {
+  overflow: hidden;
+  font-family: sans-serif;
+  background-image: url(Crypto-background.png);
+}
+
+input[type=text], input[type=password] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 26px;
+    display: inline-block;
+    border: 1px solid #0050EF;
+    box-sizing: border-box;
+	  font-size:16px;
+
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  border-color: blue;
+  box-shadow: 0 0 8px 0 blue;
+
+}
+
+.imgcontainer {
+    background-image: url(Crypto-Chart-loginform.drawio);
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+.modal {
+	   display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    border-radius: 10%;
+    background: linear-gradient(#b3cde0,#6497b1,#005b96,#03396c,#011f4b );
+    margin: 4% auto 15% auto;
+    border: 1px solid #888;
+    width: 30%;
+	  padding-bottom: 30px;
+    height: 300px;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+.animate {
+    animation: zoom 0.7s
+}
+
+  #Menu, #ett, #tva, #tre {
+  background: #3d85c6;
+  background: linear-gradient(#3d85c6, #0050ef);
+  border: 3px solid #ff9900;
+  border-radius:  7px;
+  padding: 7px 10px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 25px/1 "", cursive;
+  text-shadow:   3px 3px #000000;
+  position: relative;
+  top: 200px;
+  cursor: pointer;
+}
+.chart-container{
+  float: left;
+
+}
+.converter{
+  background-color: orange;
+  float: right;
+  box-shadow: 10px 10px;
+  border-radius: 25px;
+  padding: 20px;
+
+
+}
+#converter_titel{
+  text-align: center;
+}
+#converter_select{
+  border-radius:8px;
+}
+#converter_input{
+  border-radius:8px;
+}
+</style>
+<body>
+
+ <!-- Login form button -->
+ <center>
+  <button id="Menu" onclick="document.getElementById('modal-wrapper').style.display='block'">Menu</button>
+ </center>
+
+  <!-- Login modal popup -->
+<div id="modal-wrapper" class="modal">
+
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
+      <h1 style="text-align:center"><u>Welcome</u></h1>
+      <img src="justalogotryout3.png">
+    </div>
+
+    <!-- login form container -->
+
+    <div class="container">
+      <button id="ett" onclick="" style="top:-188px; left: 30px;">testingi</button>
+      <button id="tva" style="left: 172px; top: -188px; padding: 7px 20px;">testingi</button>
+      <center>
+      <button id="tre" style="top:-115px;">testingi</button>
+      </center>
+    </div>
+
+  </form>
+
+</div>
+  <center>
+    <div id="logo">
+      <img src="Crypto-ChartLogo.png" height="150px" width="170px;">
+</div>
+</center>
+
+<div class="chart-container" style=" height:60vh; width:50vw; margin: 20px; padding: 50px;">
+    <canvas id="chart"></canvas>
+
+</div>
+
+<div class="converter">
+<h2 id ="converter_titel">Currency converter</h2>
+<p>Type a value in the field to convert the value:</p>
+<p>
+  <label>Your Currency:</label>
+  <select id="converter_select" onchange="Converter(input.value)" id="valutor">
+  <option value="eur">EUR</option>
+  <option value="usd">USD</option>
+  <option value="gbp">GBP</option>
+  </select>
+  <input id="converter_input" type="number" placeholder=" Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
+</p>
+<p>SEK: <span id="converter_output"></span></p>
+</div>
+
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js');
+    </script>
+    <script>
+    //chart.js
+    //Variables:
+    //Tiden (alla labels i botten)
+    var time = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
+    //valutor (linjer -> höjden)
+        var currency1 = [86,114,106,106,107,111,133,221,783,2478];
+    var currency2 = [1,5,7,10,50,150,279,571,305,250];
+
+
+    //Definierar element för Chart
+    var ctx = document.getElementById("chart");
+    //skapar Chart
+    var chart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: time,
+            datasets: [
+                {
+                    data: currency1,
+                    label: "BitCoin",
+                    borderColor: "#f08b16",
+
+                    backgroundColor: "rgba(255,150,50,0.3)",
+                },
+                {
+                    data: currency2,
+                    label: "DogeCoin",
+                    borderColor: "#f08b16",
+                    backgroundColor: "rgba(255,150,50,0.3)",
+                }
+            ]
+        }
+
+    });
+    //Modalen stänger när man klickar utanför windown.
+    var modal = document.getElementById('modal-wrapper')
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+</script>
+<script>
+function Converter(valNum) {
+if(document.getElementById('valutor').value == "eur") {
+  document.getElementById("output").innerHTML=valNum*9.57337809;
+}
+  else if(document.getElementById('valutor').value == "usd") {
+  document.getElementById("output").innerHTML=valNum*8.86575911;
+  }
+  else if(document.getElementById('valutor').value == "gbp") {
+  document.getElementById("output").innerHTML=valNum*11.7179181;
+  }
+
+}
+
+</script>
+
+</body>
+</html>
