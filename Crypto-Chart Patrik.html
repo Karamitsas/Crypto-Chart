@@ -156,7 +156,7 @@ input[type=text]:focus, input[type=password]:focus {
 <p>Type a value in the field to convert the value:</p>
 <p>
   <label>Your Currency:</label>
-  <select id="converter_select" onchange="Converter(input.value)" id="valutor">
+  <select id="converter_select" onchange="Converter(input.value)">
   <option value="eur">EUR</option>
   <option value="usd">USD</option>
   <option value="gbp">GBP</option>
@@ -217,14 +217,14 @@ input[type=text]:focus, input[type=password]:focus {
 </script>
 <script>
 function Converter(valNum) {
-if(document.getElementById('valutor').value == "eur") {
-  document.getElementById("output").innerHTML=valNum*9.57337809;
+if(document.getElementById('converter_select').value == "eur") {
+  document.getElementById("converter_output").innerHTML=valNum*9.57337809;
 }
-  else if(document.getElementById('valutor').value == "usd") {
-  document.getElementById("output").innerHTML=valNum*8.86575911;
+  else if(document.getElementById('converter_select').value == "usd") {
+  document.getElementById("converter_output").innerHTML=valNum*8.86575911;
   }
-  else if(document.getElementById('valutor').value == "gbp") {
-  document.getElementById("output").innerHTML=valNum*11.7179181;
+  else if(document.getElementById('converter_select').value == "gbp") {
+  document.getElementById("converter_output").innerHTML=valNum*11.7179181;
   }
 
 }
