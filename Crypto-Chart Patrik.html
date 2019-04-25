@@ -11,22 +11,6 @@ body {
   background-image: url(Crypto-background.png);
 }
 
-input[type=text], input[type=password] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 8px 26px;
-    display: inline-block;
-    border: 1px solid #0050EF;
-    box-sizing: border-box;
-	  font-size:16px;
-
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  border-color: blue;
-  box-shadow: 0 0 8px 0 blue;
-
-}
 
 .imgcontainer {
     background-image: url(Crypto-Chart-loginform.drawio);
@@ -35,7 +19,7 @@ input[type=text]:focus, input[type=password]:focus {
     position: relative;
 }
 .modal {
-	   display:none;
+	  display:none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -97,6 +81,9 @@ input[type=text]:focus, input[type=password]:focus {
   box-shadow: 10px 10px;
   border-radius: 25px;
   padding: 20px;
+  position: relative;
+  right: 150px;
+  bottom: -90px;
 
 
 }
@@ -117,24 +104,23 @@ input[type=text]:focus, input[type=password]:focus {
   <button id="Menu" onclick="document.getElementById('modal-wrapper').style.display='block'">Menu</button>
  </center>
 
-  <!-- Login modal popup -->
+  <!-- modal popup -->
 <div id="modal-wrapper" class="modal">
 
   <form class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
       <h1 style="text-align:center"><u>Welcome</u></h1>
-      <img src="justalogotryout3.png">
     </div>
 
     <!-- login form container -->
 
     <div class="container">
-      <button id="ett" onclick="" style="top:-188px; left: 30px;">testingi</button>
-      <button id="tva" style="left: 172px; top: -188px; padding: 7px 20px;">testingi</button>
-      <center>
-      <button id="tre" style="top:-115px;">testingi</button>
-      </center>
+      <button id="ett" onclick="" style="left: 50px; top:80px;">Test</button>
+      <button id="tva" style="left: 100px; top: 80px;">Test</button>
+
+      <button id="tre" style="left: 150px; top: 80px;">Test</button>
+
     </div>
 
   </form>
@@ -156,18 +142,22 @@ input[type=text]:focus, input[type=password]:focus {
 <p>Type a value in the field to convert the value:</p>
 <p>
   <label>Your Currency:</label>
-  <select id="converter_select" onchange="Converter(input.value)" id="valutor">
+  <select id="valutor" onchange="Converter(input.value)" id="valutor">
   <option value="eur">EUR</option>
   <option value="usd">USD</option>
   <option value="gbp">GBP</option>
   </select>
-  <input id="converter_input" type="number" placeholder=" Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
+  <input id="converter_input" type="number" placeholder="Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
 </p>
 <p>SEK: <span id="converter_output"></span></p>
 </div>
 
 
-    <script>
+
+  <script>
+
+  
+  curl https://api.coinlayer.com/live?access_key=YOUR_KEY
       // You can also require other files to run in this process
       require('./renderer.js');
     </script>
@@ -178,7 +168,7 @@ input[type=text]:focus, input[type=password]:focus {
     var time = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
     //valutor (linjer -> höjden)
         var currency1 = [86,114,106,106,107,111,133,221,783,2478];
-    var currency2 = [1,5,7,10,50,150,279,571,305,250];
+        var currency2 = [1,5,7,10,50,150,279,571,305,250];
 
 
     //Definierar element för Chart
@@ -218,16 +208,19 @@ input[type=text]:focus, input[type=password]:focus {
 <script>
 function Converter(valNum) {
 if(document.getElementById('valutor').value == "eur") {
-  document.getElementById("output").innerHTML=valNum*9.57337809;
+  document.getElementById("converter_output").innerHTML=valNum*10.5195;
 }
   else if(document.getElementById('valutor').value == "usd") {
-  document.getElementById("output").innerHTML=valNum*8.86575911;
+  document.getElementById("converter_output").innerHTML=valNum*10.12413;
   }
   else if(document.getElementById('valutor').value == "gbp") {
-  document.getElementById("output").innerHTML=valNum*11.7179181;
+  document.getElementById("converter_output").innerHTML=valNum*12.1687;
   }
 
 }
+
+
+
 
 </script>
 
