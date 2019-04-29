@@ -11,22 +11,6 @@ body {
   background-image: url(Crypto-background.png);
 }
 
-input[type=text], input[type=password] {
-    width: 90%;
-    padding: 12px 20px;
-    margin: 8px 26px;
-    display: inline-block;
-    border: 1px solid #0050EF;
-    box-sizing: border-box;
-	  font-size:16px;
-
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  border-color: blue;
-  box-shadow: 0 0 8px 0 blue;
-
-}
 
 .imgcontainer {
     background-image: url(Crypto-Chart-loginform.drawio);
@@ -35,7 +19,7 @@ input[type=text]:focus, input[type=password]:focus {
     position: relative;
 }
 .modal {
-	   display:none;
+	  display:none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -87,8 +71,38 @@ input[type=text]:focus, input[type=password]:focus {
   top: 200px;
   cursor: pointer;
 }
+.chart-container{
+  float: left;
+
+}
+.converter{
+  background-color: orange;
+  float: right;
+  box-shadow: 10px 10px;
+  border-radius: 25px;
+  padding: 20px;
+  position: relative;
+  right: 150px;
+  bottom: -90px;
 
 
+}
+#converter_titel{
+  text-align: center;
+}
+#converter_select{
+  border-radius:8px;
+}
+#converter_input{
+  border-radius:8px;
+}
+
+#bitcoinpic{
+  position: relative;
+  right: -50px;
+  top: 110px;
+
+}
 </style>
 <body>
 
@@ -97,24 +111,23 @@ input[type=text]:focus, input[type=password]:focus {
   <button id="Menu" onclick="document.getElementById('modal-wrapper').style.display='block'">Menu</button>
  </center>
 
-  <!-- Login modal popup -->
+  <!-- modal popup -->
 <div id="modal-wrapper" class="modal">
 
   <form class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
       <h1 style="text-align:center"><u>Welcome</u></h1>
-      <img src="justalogotryout3.png">
     </div>
 
     <!-- login form container -->
 
     <div class="container">
-      <button id="ett" onclick="" style="top:-188px; left: 30px;">testingi</button>
-      <button id="tva" style="left: 172px; top: -188px; padding: 7px 20px;">testingi</button>
-      <center>
-      <button id="tre" style="top:-115px;">testingi</button>
-      </center>
+      <button id="ett" onclick="" style="left: 50px; top:80px;">Test</button>
+      <button id="tva" style="left: 100px; top: 80px;">Test</button>
+
+      <button id="tre" style="left: 150px; top: 80px;">Test</button>
+
     </div>
 
   </form>
@@ -126,10 +139,32 @@ input[type=text]:focus, input[type=password]:focus {
 </div>
 </center>
 
+
 <div class="chart-container" style=" height:60vh; width:50vw; margin: 20px; padding: 50px;">
     <canvas id="chart"></canvas>
 
-    <script>
+</div>
+
+<div class="converter">
+<h2 id ="converter_titel">Currency converter</h2>
+<p>Type a value in the field to convert the value: </p>
+<p>
+  <label>Your Currency:</label>
+  <select id="valutor" onchange="Converter(input.value)" id="valutor">
+  <option value="btc">Bitcoin(BTC)</option>
+  <option value="doge">Dogecoin(DOGE)</option>
+  <option value="eth">Ethereum(ETH)</option>
+  </select>
+  <input id="converter_input" type="number" placeholder="Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
+</p>
+<p>SEK: <span id="converter_output"></span></p>
+</div>
+<img src="bitcoin.png" height="60px" id="bitcoinpic";>
+
+  <script>
+
+
+
       // You can also require other files to run in this process
       require('./renderer.js');
     </script>
@@ -137,11 +172,11 @@ input[type=text]:focus, input[type=password]:focus {
     //chart.js
     //Variables:
     //Tiden (alla labels i botten)
-    var time = [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050];
+    var time = ["Nov '13'","Jul '14'","Mar '15'","Nov '15'","Jul '16'","Mar '17'","Nov '17'","Jul '18'","Nov '18'","Mar '19'"];
     //valutor (linjer -> höjden)
-        var currency1 = [86,114,106,106,107,111,133,221,783,2478];
-    var currency2 = [1,5,7,10,50,150,279,571,305,250];
-
+        var currency1 = [361,629,251,317,673,1159,5727,6341,5501,3857];
+        var currency2 = [0.0005,0.0002,0.00014,0.0015,0.0003,0.0002,0.001,0.002,0.0025,0.002];
+        var currency3 = [0.86,7.33,13.17,15.37,202.15,721.35,575,204,105,135];
 
     //Definierar element för Chart
     var ctx = document.getElementById("chart");
@@ -161,9 +196,15 @@ input[type=text]:focus, input[type=password]:focus {
                 {
                     data: currency2,
                     label: "DogeCoin",
-                    borderColor: "#f08b16",
+                    borderColor: "#cb9800",
                     backgroundColor: "rgba(255,150,50,0.3)",
-                }
+                },
+                {
+                   data: currency3,
+                   label: "Ethereum",
+                   borderColor: "black",
+                   backgroundColor: "rgba(255,150,50,0.3)",
+                },
             ]
         }
 
@@ -178,6 +219,22 @@ input[type=text]:focus, input[type=password]:focus {
 
 </script>
 
+
+<script>
+function Converter(valNum) {
+if(document.getElementById('valutor').value == "btc") {
+  document.getElementById("converter_output").innerHTML=valNum*51913.15;
+}
+  else if(document.getElementById('valutor').value == "doge") {
+  document.getElementById("converter_output").innerHTML=valNum*0.023488;
+  }
+  else if(document.getElementById('valutor').value == "eth") {
+  document.getElementById("converter_output").innerHTML=valNum*1465;
+  }
+
+}
+
+</script>
 
 </body>
 </html>
