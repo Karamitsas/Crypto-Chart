@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,7 +154,7 @@ body {
   <select id="valutor" onchange="Converter(input.value)" id="valutor">
   <option value="btc">Bitcoin(BTC)</option>
   <option value="doge">Dogecoin(DOGE)</option>
-  <option value="eth">Ethereum(ETH)</option>
+  <option value="xrp">Ripple(XRP)</option>
   </select>
   <input id="converter_input" type="number" placeholder="Value" oninput="Converter(this.value)" onchange="Converter(this.value)">
 </p>
@@ -218,18 +219,16 @@ body {
     }
 
 </script>
-
-
 <script>
 function Converter(valNum) {
 if(document.getElementById('valutor').value == "btc") {
-  document.getElementById("converter_output").innerHTML=valNum*51913.15;
+  document.getElementById("converter_output").innerHTML=valNum*51372.13;
 }
   else if(document.getElementById('valutor').value == "doge") {
-  document.getElementById("converter_output").innerHTML=valNum*0.023488;
+  document.getElementById("converter_output").innerHTML=valNum*0.02;
   }
-  else if(document.getElementById('valutor').value == "eth") {
-  document.getElementById("converter_output").innerHTML=valNum*1465;
+  else if(document.getElementById('valutor').value == "xrp") {
+  document.getElementById("converter_output").innerHTML=valNum*2.98;
   }
 
 }
